@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmky0knk2v6u5"
+path="res://.godot/imported/Balloon Pop Sound effect.ogg-3e09d675907e9bb1dc45606589eaa749.oggvorbisstr"
+
+[deps]
+
+source_file="res://Balloon Popper/Balloon Pop Sound effect.ogg"
+dest_files=["res://.godot/imported/Balloon Pop Sound effect.ogg-3e09d675907e9bb1dc45606589eaa749.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

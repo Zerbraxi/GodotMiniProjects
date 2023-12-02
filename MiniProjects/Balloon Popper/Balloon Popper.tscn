@@ -1,33 +1,50 @@
 [gd_scene load_steps=6 format=3 uid="uid://ho5r1mg8ss60"]
 
-[ext_resource type="Script" path="res://Balloon Popper/Balloon.gd" id="1_8yt11"]
 [ext_resource type="Script" path="res://Balloon Popper/Balloon Manager.gd" id="1_tm8s2"]
-[ext_resource type="Material" uid="uid://bvs7ljnynhxn6" path="res://Balloon Popper/balloon.tres" id="2_p0m6o"]
+[ext_resource type="PackedScene" uid="uid://bpkx4pwqceadx" path="res://Balloon Popper/Balloon.tscn" id="2_cryph"]
+[ext_resource type="AudioStream" uid="uid://cmky0knk2v6u5" path="res://Balloon Popper/Balloon Pop Sound effect.ogg" id="3_jn4oe"]
+[ext_resource type="AudioStream" uid="uid://rklebs2osnab" path="res://Balloon Popper/Games, Video, Shooting Game, GUI, Hover Over, Complex, With Click SND62879.wav" id="4_l6us6"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_2vv1n"]
+[sub_resource type="LabelSettings" id="LabelSettings_ctt1u"]
+font_size = 76
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_30fgr"]
-radius = 0.499507
-
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("score_text")]
 script = ExtResource("1_tm8s2")
+score_text = NodePath("ScoreText")
 
-[node name="Balloon" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.020762)
-script = ExtResource("1_8yt11")
+[node name="Balloon" parent="." instance=ExtResource("2_cryph")]
+clicks_to_pop = 2
 
-[node name="Model" type="MeshInstance3D" parent="Balloon"]
-material_override = ExtResource("2_p0m6o")
-mesh = SubResource("SphereMesh_2vv1n")
+[node name="Balloon3" parent="." instance=ExtResource("2_cryph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93749, 0.769439, -2.81628)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Balloon"]
-shape = SubResource("SphereShape3D_30fgr")
+[node name="Balloon4" parent="." instance=ExtResource("2_cryph")]
+transform = Transform3D(0.916977, -0.398941, 0, 0.398941, 0.916977, 0, 0, 0, 1, 2.63352, -1.70544, -4.32723)
+clicks_to_pop = 7
+
+[node name="Balloon5" parent="." instance=ExtResource("2_cryph")]
+transform = Transform3D(0.733581, -0.319153, 0, 0.319153, 0.733581, 0, 0, 0, 0.8, -1.77064, -1.94746, -3.104)
+clicks_to_pop = 9
+
+[node name="Balloon2" parent="." instance=ExtResource("2_cryph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06204, 0.734855, 0.234199)
+clicks_to_pop = 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.752)
-fov = 90.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119521, 2.76687)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.641985, -0.530857, 0.553214, -0.000217562, 0.72141, 0.692508, -0.766717, -0.444701, 0.463019, 0, 2.11999, 0.00515151)
 
-[connection signal="input_event" from="Balloon" to="Balloon" method="_on_input_event"]
+[node name="ScoreText" type="Label" parent="."]
+offset_right = 306.0
+offset_bottom = 93.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_ctt1u")
+
+[node name="BalloonPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jn4oe")
+volume_db = -5.571
+
+[node name="BalloonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l6us6")
